@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ken-burns-video"
+version = "1.0.0"
+description = "Videos con zoom, paneo y fundidos desde imágenes y un audio."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Ignacio Zañartu Hoppner" }]
+dependencies = ["typer>=0.16,<1"]
+
+[project.scripts]
+ken-burns-video = "ken_burns_video.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "ruff>=0.11,<1", "mypy>=1.15,<2", "build>=1.2,<2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ken_burns_video"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["smoke: render corto real con ffmpeg y ffprobe"]
