@@ -28,7 +28,7 @@ def test_distributes_frames_and_preserves_audio_duration(config: VideoConfig) ->
 
 def test_rounding_is_bounded_to_one_frame(config: VideoConfig) -> None:
     plan = build_plan(replace(config, fps=24, fade=0.23), 10.03)
-    assert plan.clip_frames == (84, 84, 83)
+    assert plan.clip_frames == (85, 84, 84)
     assert plan.fade_frames == 6
     assert sum(plan.clip_frames) - 12 == plan.video_frames
     assert 0 <= plan.video_duration - plan.audio_duration < 1 / 24
