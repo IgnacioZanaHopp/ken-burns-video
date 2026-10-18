@@ -90,6 +90,7 @@ def test_invalid_duration(config: VideoConfig, duration: float) -> None:
         {"resolution": "4k"},
         {"fade": -1},
         {"fade": float("nan")},
+        {"fade": 1e308},
         {"fade": 0},
         {"zoom": 1},
         {"zoom": 1.51},

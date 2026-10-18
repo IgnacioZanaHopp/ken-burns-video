@@ -136,7 +136,7 @@ uv run pytest -m smoke       # 720p con fundidos y 1080p con una imagen
 uv build                     # wheel y sdist en dist/
 ```
 
-Se ejecutaron **51 pruebas**, incluidas las dos de humo, además de ruff y mypy
+Se ejecutaron **52 pruebas**, incluidas las dos de humo, además de ruff y mypy
 estricto. Las unitarias inspeccionan el comando, tiempos, zoom, mapeo de pistas,
 validación, errores de ffprobe, CLI y protección de salidas. Las de humo renderizan
 medios sintéticos en temporales, decodifican frames para verificar las imágenes y

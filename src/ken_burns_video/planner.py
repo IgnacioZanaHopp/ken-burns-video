@@ -68,6 +68,8 @@ def build_plan(config: VideoConfig, audio_duration: float, ffmpeg: str = "ffmpeg
     width, height = SIZES[config.resolution]
     count = len(config.images)
     target_frames = math.ceil(audio_duration * config.fps)
+    if count > 1 and config.fade >= audio_duration:
+        raise ConfigurationError("Audio demasiado corto para el fundido; reduce --fade.")
     # Redondeo explícito al fotograma más cercano; una sola imagen no necesita xfade.
     fade_frames = math.floor(config.fade * config.fps + 0.5) if count > 1 else 0
     if count > 1 and fade_frames == 0:
