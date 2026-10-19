@@ -7,7 +7,8 @@ from typer.testing import CliRunner
 from ken_burns_video.cli import app
 from ken_burns_video.errors import MediaError
 
-runner = CliRunner()
+# Sin colores ni cortes de línea: en CI Rich fuerza ANSI y parte las opciones.
+runner = CliRunner(env={"NO_COLOR": "1", "TERM": "dumb", "COLUMNS": "200", "FORCE_COLOR": None})
 
 
 def inputs(tmp_path: Path) -> tuple[Path, Path]:
